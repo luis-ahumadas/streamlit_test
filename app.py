@@ -1,7 +1,7 @@
+import time
 import pandas as pd
 import scipy.stats
 import streamlit as st
-import time
 
 # Estas son variables de estado que se conservan cuando streamlit vuelve a
 # ejecutar este script
@@ -16,7 +16,6 @@ st.header('Lanzar una moneda')
 chart = st.line_chart([0.5])
 
 def toss_coin(n):
-    
     trial_outcomes = scipy.stats.bernoulli.rvs(p=0.5, size=n)
 
     mean = None
@@ -46,6 +45,7 @@ if start_button:
                         columns=['no', 'iteraciones', 'media'])
         ],
         axis=0)
-    st.session_state['df_experiment_results'] = st.session_state['df_experiment_results'].reset_index(drop=True)
+    st.session_state['df_experiment_results'] = st.session_state[
+        'df_experiment_results'].reset_index(drop=True)
 
 st.write(st.session_state['df_experiment_results'])
